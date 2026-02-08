@@ -475,27 +475,78 @@
                                 Glyph="&#xE74B;"
                                 Visibility="Collapsed" />
 
-                            <StackPanel
-                                Margin="0,0,-16,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom">
-                                <TextBlock Visibility="{x:Bind HasMods, Mode=OneWay, Converter={StaticResource BoolToVisibleConverter}}" Text="{x:Bind ModCountString, Mode=OneWay}" />
-                                <Border
-                                    BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
-                                    BorderThickness="0,0,0,2"
-                                    Visibility="{x:Bind HasEnabledMods, Mode=OneWay, Converter={StaticResource BoolToVisibleConverter}}" />
-                            </StackPanel>
 
+                            <Grid Grid.Row="1" Margin="{StaticResource XXSmallTopMargin}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock
-                                Grid.Row="1"
-                                Margin="{StaticResource XXSmallTopMargin}"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Bottom"
-                                FontFamily="{StaticResource GenshinFont}"
-                                FontSize="14"
-                                TextWrapping="WrapWholeWords"
-                                Text="{x:Bind Character.DisplayName}" />
+                                <!--  Traffic Light Indicator with Improved Glow  -->
+                                <Grid
+                                    Grid.Column="0"
+                                    Margin="-32,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Visibility="{x:Bind HasMods, Mode=OneWay, Converter={StaticResource BoolToVisibleConverter}}">
+                                    <!--  Outer Glow Layer (Softer, Larger)  -->
+                                    <Ellipse
+                                        Width="7"
+                                        Height="7"
+                                        Fill="{x:Bind StatusBrush, Mode=OneWay}"
+                                        Opacity="0.4">
+                                        <Ellipse.RenderTransform>
+                                            <ScaleTransform
+                                                CenterX="3.5"
+                                                CenterY="3.5"
+                                                ScaleX="2.0"
+                                                ScaleY="2.0" />
+                                        </Ellipse.RenderTransform>
+                                    </Ellipse>
+                                    <!--  Inner Glow Layer (Brighter, Smaller)  -->
+                                    <Ellipse
+                                        Width="7"
+                                        Height="7"
+                                        Fill="{x:Bind StatusBrush, Mode=OneWay}"
+                                        Opacity="0.6">
+                                        <Ellipse.RenderTransform>
+                                            <ScaleTransform
+                                                CenterX="3.5"
+                                                CenterY="3.5"
+                                                ScaleX="1.4"
+                                                ScaleY="1.4" />
+                                        </Ellipse.RenderTransform>
+                                    </Ellipse>
+                                    <!--  Core Layer  -->
+                                    <Ellipse
+                                        Width="5.5"
+                                        Height="5.5"
+                                        Fill="{x:Bind StatusBrush, Mode=OneWay}" />
+                                </Grid>
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="{StaticResource GenshinFont}"
+                                    FontSize="16"
+                                    TextWrapping="WrapWholeWords"
+                                    Text="{x:Bind Character.DisplayName}" />
+
+                                <!--  Mod Count Display (Larger, Colored)  -->
+                                <TextBlock
+                                    Grid.Column="2"
+                                    Margin="0,0,-32,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    FontWeight="SemiBold"
+                                    Foreground="{x:Bind ModCountBrush, Mode=OneWay}"
+                                    Text="{x:Bind ModCountString, Mode=OneWay}"
+                                    Visibility="{x:Bind HasMods, Mode=OneWay, Converter={StaticResource BoolToVisibleConverter}}" />
+
+                            </Grid>
                         </Grid>
                     </Grid>
                 </DataTemplate>

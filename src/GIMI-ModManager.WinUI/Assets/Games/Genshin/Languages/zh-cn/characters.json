@@ -522,5 +522,25 @@
     "InGameSkins": [],
     "InternalName": "Kachina",
     "DisplayName": "卡齐娜"
+  },
+  {
+    "InternalName": "Citlali",
+    "DisplayName": "茜特拉莉"
+  },
+  {
+    "InternalName": "Iansan",
+    "DisplayName": "伊安珊"
+  },
+  {
+    "InternalName": "Mavuika",
+    "DisplayName": "玛薇卡"
+  },
+  {
+    "InternalName": "Ororon",
+    "DisplayName": "欧洛伦"
+  },
+  {
+    "InternalName": "Chasca",
+    "DisplayName": "恰斯卡"
   }
 ]
